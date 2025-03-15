@@ -1,16 +1,9 @@
 package com.devsuperior.segundodesafio.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_atividade")
@@ -25,6 +18,9 @@ public class Atividade {
 	@ManyToOne
 	@JoinColumn(name = "categoria_id" )
 	private Categoria categoria;
+	
+	@ManyToMany(mappedBy = "atividades")
+	private Set<Participante> participantes = new HashSet<>();
 	
 	public Atividade() {
 		
@@ -73,6 +69,10 @@ public class Atividade {
 
 	public Categoria getCategoria() {
 		return categoria;
+	}
+
+	public Set<Participante> getParticipantes() {
+		return participantes;
 	}
 	
 	
