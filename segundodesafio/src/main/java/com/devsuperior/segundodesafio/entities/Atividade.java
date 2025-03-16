@@ -1,7 +1,7 @@
 package com.devsuperior.segundodesafio.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 
 import jakarta.persistence.*;
 
@@ -21,6 +21,9 @@ public class Atividade {
 	
 	@ManyToMany(mappedBy = "atividades")
 	private Set<Participante> participantes = new HashSet<>();
+	
+	@OneToMany(mappedBy = "atividade")
+	private List<Bloco> blocos = new ArrayList<>();
 	
 	public Atividade() {
 		
@@ -73,6 +76,27 @@ public class Atividade {
 
 	public Set<Participante> getParticipantes() {
 		return participantes;
+	}
+
+	public List<Bloco> getBlocos() {
+		return blocos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atividade other = (Atividade) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 	
