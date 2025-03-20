@@ -19,7 +19,7 @@ public class Client {
 	private String name;
 	@Column(unique=true)
 	private String cpf;
-	private Double come;
+	private Double income;
 	private LocalDate birthDate;
 	private Integer children;
 	
@@ -27,11 +27,11 @@ public class Client {
 		
 	}
 
-	public Client(Long id, String name, String cpf, Double come, LocalDate birthDate, Integer children) {
+	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.come = come;
+		this.income = income;
 		this.birthDate = birthDate;
 		this.children = children;
 	}
@@ -60,12 +60,12 @@ public class Client {
 		this.cpf = cpf;
 	}
 
-	public Double getCome() {
-		return come;
+	public Double getIncome() {
+		return income;
 	}
 
-	public void setCome(Double come) {
-		this.come = come;
+	public void setIncome(Double income) {
+		this.income = income;
 	}
 
 	public LocalDate getBirthDate() {
@@ -86,7 +86,7 @@ public class Client {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(birthDate, children, come, cpf, id, name);
+		return Objects.hash(birthDate, children, income, cpf, id, name);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class Client {
 			return false;
 		Client other = (Client) obj;
 		return Objects.equals(birthDate, other.birthDate) && Objects.equals(children, other.children)
-				&& Objects.equals(come, other.come) && Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
+				&& Objects.equals(income, other.income) && Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name);
 	}
 	
