@@ -2,16 +2,24 @@ package com.devsuperior.terceirodesafio.dto;
 
 import java.time.LocalDate;
 
+
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.terceirodesafio.entities.Client;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
+
 @Service
 public class ClientDTO {
 	private Long id;
+	@NotBlank(message = "campo não pode ser vazio")
 	private String name;
+	
 	private String cpf;
 	private Double income;
+	@PastOrPresent(message = "não pode ser data futura")
 	private LocalDate birthDate;
 	private Integer children;
 	
